@@ -10,7 +10,7 @@ ENV AWS_ACCESS_KEY_ID=""        \
     AZURE_STORAGE_ACCESS_KEY="" \
     AZURE_CONFIG_DIR=/root/.azure \
     AZURE_NON_INTERACTIVE_MODE=true \
-    HA_NOTIFY_SCRIPT=/usr/local/bin/notify_aws.sh
+    OPENSHIFT_HA_NOTIFY_SCRIPT=/usr/local/bin/notify_aws.sh
     
 ### Install AWS CLI ###
 RUN yum -y update && \
