@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 . /var/lib/ipfailover/keepalived/lib/failover-functions.sh
 

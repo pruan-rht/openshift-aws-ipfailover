@@ -1,4 +1,4 @@
-FROM openshift/origin-keepalived-ipfailover:latest
+FROM docker.io/openshift/origin-keepalived-ipfailover:latest
 MAINTAINER Samuel Terburg <sterburg@redhat.com>
 ENTRYPOINT /usr/local/bin/entrypoint.sh
 
