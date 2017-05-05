@@ -1,8 +1,7 @@
-FROM openshift/origin-haproxy-router:latest
+FROM openshift/origin-keepalived-ipfailover:latest
 MAINTAINER Samuel Terburg <sterburg@redhat.com>
 ENTRYPOINT /usr/local/bin/entrypoint.sh
 
-USER 0
 COPY bin/  /usr/local/bin/
 
 ENV AWS_ACCESS_KEY_ID=""        \
@@ -11,20 +10,19 @@ ENV AWS_ACCESS_KEY_ID=""        \
     AZURE_STORAGE_ACCESS_KEY="" \
     AZURE_CONFIG_DIR=/root/.azure \
     AZURE_NON_INTERACTIVE_MODE=true \
+    HA_NOTIFY_SCRIPT=/usr/local/bin/notify_aws.sh
     
 ### Install AWS CLI ###
 RUN yum -y update && \
     yum -y install epel-release && \
-    yum -y install python-pip   && \
-    yum clean all && \
+    yum -y install cloud-utils python-pip && \
     pip install --upgrade awscli
 
 COPY .aws/ /root/.aws/
 
 ### Install Azure CLI ###
-ENV 
-RUN curl -L https://aka.ms/InstallAzureCli | bash; \
+RUN yum -y install gcc libffi-devel python-devel openssl-devel && \
+    yum clean all && \
+    curl -L https://aka.ms/InstallAzureCli | bash; \
     pip install --upgrade azure-cli
 
-
-USER 1001
