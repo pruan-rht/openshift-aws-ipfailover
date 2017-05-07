@@ -13,3 +13,4 @@ oc -n default   volume dc/ipfailover  --add --mount-path=/root/.aws --type=hostP
 ```
 
 For detailed info see blog-post: http://www.sterburg.nl/2017/05/07/saving-aws-elb-usage-cost-using-openshifts-built-in-keepalived-ipfailover/
+For more info on `oadm ipfailover`, see: https://docs.openshift.com/container-platform/3.5/admin_guide/high_availability.html
