@@ -1,6 +1,6 @@
 FROM docker.io/openshift/origin-keepalived-ipfailover:latest
 MAINTAINER Samuel Terburg <sterburg@redhat.com>
-ENTRYPOINT /usr/local/bin/entrypoint.sh
+
 
 COPY bin/  /usr/local/bin/
 
@@ -15,4 +15,4 @@ RUN yum -y update && \
     pip install --upgrade awscli
 
 COPY .aws/ /root/.aws/
-
+ENTRYPOINT /usr/local/bin/entrypoint.sh
